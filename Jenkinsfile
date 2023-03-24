@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven-3.9'
+        docker 'Docker'
     }
         
     stages {
@@ -15,7 +16,9 @@ pipeline {
             steps {
                echo "building the docker image..."
                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-               sh 'docker build -t 
+               sh 'docker build -t wissaaal/my-repo:jma-0.0 .'
+               sh "echo $PASS | docker login -u $USER --password-stdin"
+               sh 'docker push wissaaal/my-repo:jma-0.0'
                }
             }
         }
