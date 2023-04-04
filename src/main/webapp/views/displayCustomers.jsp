@@ -1,3 +1,6 @@
+
+
+
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.*"%>
@@ -60,7 +63,7 @@
 					try {
 						String url = "jdbc:mysql://localhost:3306/springproject";
 						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection con = DriverManager.getConnection(url, "root", "admin");
+						Connection con = DriverManager.getConnection(url, "", "admin");
 						Statement stmt = con.createStatement();
 						Statement stmt2 = con.createStatement();
 						ResultSet rs = stmt.executeQuery("select * from users");
