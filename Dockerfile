@@ -1,8 +1,16 @@
 FROM openjdk:8-jre-alpine
 
-EXPOSE 8080
+# Définir la variable d'environnement pour le port d'application
+ENV PORT=8081
 
-COPY ./target/java-maven-app-*.jar /usr/app/
+# Copier le fichier JAR dans le conteneur
+COPY ./target/JtSpringProject-0.0.1-SNAPSHOT.jar /usr/app/
+
+# Définir le répertoire de travail
 WORKDIR /usr/app
 
-CMD java -jar java-maven-app-*.jar
+# Exposer le port défini
+EXPOSE $PORT
+
+# Lancer l'application Spring Boot
+CMD java -Dserver.port=$PORT -jar JtSpringProject-0.0.1-SNAPSHOT.jar
