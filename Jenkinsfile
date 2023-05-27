@@ -1,6 +1,7 @@
 pipeline {
     agent any
     tools {
+        jdk 'openJDK'
         maven 'Maven'
       
     }
