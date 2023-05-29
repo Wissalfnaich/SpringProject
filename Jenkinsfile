@@ -10,6 +10,7 @@ pipeline {
         stage("build jar") {
             steps {
                echo "building the application..."
+                sh 'javac -version'
                 sh 'mvn package'
             }
         }
